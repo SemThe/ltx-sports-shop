@@ -1,0 +1,74 @@
+/* ============================================================
+   FEATURED VIDEO
+   ============================================================ */
+.section {
+  padding: 0 48px 140px;
+}
+
+.inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.wrap {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.playBtn {
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.3s var(--ease-expo);
+}
+
+.playBtn svg {
+  width: 22px;
+  height: 22px;
+  margin-left: 4px;
+}
+
+.playBtn:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.videoTitle {
+  position: absolute;
+  bottom: 44px;
+  left: 44px;
+  right: 44px;
+  z-index: 1;
+}
+
+.videoTitle h2 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.5vw, 68px);
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .section { padding: 0 24px 100px; }
+}
