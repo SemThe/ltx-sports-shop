@@ -14,8 +14,8 @@ export default function Home() {
       <main>
         <Hero />
         <Products />
-        <Instagram />
         <Signature />
+        <Instagram />
         <Story />
         <FeaturedVideo />
       </main>

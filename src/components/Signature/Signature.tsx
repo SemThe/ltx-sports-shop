@@ -54,7 +54,7 @@ export default function Signature() {
 
       <div className={styles.left}>
         <p className={`${styles.eyebrow} sig-reveal`} style={{ opacity: 0 }}>
-          Signature Collection 2025
+          Signature Collection 2026
         </p>
 
         <h2
@@ -98,8 +98,8 @@ export default function Signature() {
       <div className={styles.right} aria-hidden="true">
         <div className="sig-img" style={{ width: '100%', height: '100%', position: 'relative' }}>
           <Image
-            src="https://images.unsplash.com/photo-1502200893034-b7bca90610ef?q=80&w=900&auto=format&fit=crop"
-            alt="Slingshot Code NXT 2 kite in actie"
+            src="/Slingshot code nxt v2.png"
+            alt="Slingshot Code NXT 2 kite"
             fill
             sizes="50vw"
             style={{ objectFit: 'cover' }}
