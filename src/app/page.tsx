@@ -1,7 +1,7 @@
 import Nav from '@/components/Nav/Nav'
 import Hero from '@/components/Hero/Hero'
 import Products from '@/components/Products/Products'
-import Lifestyle from '@/components/Lifestyle/Lifestyle'
+import Instagram from '@/components/Instagram/Instagram'
 import Signature from '@/components/Signature/Signature'
 import Story from '@/components/Story/Story'
 import FeaturedVideo from '@/components/FeaturedVideo/FeaturedVideo'
@@ -14,7 +14,7 @@ export default function Home() {
       <main>
         <Hero />
         <Products />
-        <Lifestyle />
+        <Instagram />
         <Signature />
         <Story />
         <FeaturedVideo />
