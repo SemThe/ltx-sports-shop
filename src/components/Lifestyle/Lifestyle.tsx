@@ -5,13 +5,13 @@ import Image from 'next/image'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import styles from './Lifestyle.module.css'
 
-// Pas hier de gallerij-items aan
+// Pas hier de gallerij-items aan — Unsplash, vrij te gebruiken
 const CELLS = [
-  { seed: 'kiteboarder-jump-sunset-tall',       label: 'Morocco Sessions', title: 'Catching Air',   tall: true },
-  { seed: 'ocean-wave-spray-aerial-shot',        label: 'Tarifa, Spain',    title: 'Wave Riding'              },
-  { seed: 'kite-canopy-detail-close'                                                                           },
-  { seed: 'kiteboard-beach-sand-golden-hour',    label: 'Equipment',        title: 'Built Precise'            },
-  { seed: 'sunset-ocean-horizon-minimalist'                                                                    },
+  { img: 'https://images.unsplash.com/photo-1601144378611-48eb4755a8c8?q=80&w=700&auto=format&fit=crop', label: 'Morocco Sessions', title: 'Catching Air',   tall: true },
+  { img: 'https://images.unsplash.com/photo-1657099021453-9a603c6e0328?q=80&w=800&auto=format&fit=crop', label: 'Tarifa, Spain',    title: 'Wave Riding'              },
+  { img: 'https://images.unsplash.com/photo-1585568742363-a0eaf4e7d290?q=80&w=600&auto=format&fit=crop'                                                               },
+  { img: 'https://images.unsplash.com/photo-1688904851329-c41d0a57f536?q=80&w=800&auto=format&fit=crop', label: 'Zanzibar',         title: 'Built Precise'            },
+  { img: 'https://images.unsplash.com/photo-1467363810413-4e5d104a734f?q=80&w=600&auto=format&fit=crop'                                                               },
 ] as const
 
 const MARQUEE_WORDS = ['Performance', 'Wind', 'Freedom', 'Speed', 'Control', 'Power', 'Altitude', 'Ocean']
@@ -81,7 +81,7 @@ export default function Lifestyle() {
             className={`${styles.cell} ${'tall' in cell && cell.tall ? styles.cellTall : ''} lifestyle-cell`}
           >
             <Image
-              src={`https://picsum.photos/seed/${cell.seed}/${'tall' in cell && cell.tall ? '700/1000' : '600/500'}`}
+              src={cell.img}
               alt={'title' in cell ? cell.title ?? '' : ''}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

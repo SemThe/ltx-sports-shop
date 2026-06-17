@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       // Placeholder afbeeldingen (vervang later door eigen CDN of /public map)
       { protocol: 'https', hostname: 'picsum.photos' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
 };

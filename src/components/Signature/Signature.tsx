@@ -62,15 +62,15 @@ export default function Signature() {
           id="sig-title"
           style={{ opacity: 0, transform: 'translateY(48px)' }}
         >
-          Designed for riders<br />who push{' '}
-          <span className={styles.muted}>beyond<br />limits.</span>
+          Code NXT 2 —<br />
+          <span className={styles.muted}>next level<br />freedom.</span>
         </h2>
 
         <p
           className={`${styles.body} sig-reveal`}
           style={{ opacity: 0, transform: 'translateY(48px)' }}
         >
-          De RPM-serie herdefiniëert wat een freeride kite kan zijn. Delta-Hybrid geometrie
+          De Code NXT 2 herdefiniëert wat een freeride kite kan zijn. Delta-Hybrid geometrie
           gecombineerd met Variable Arc Canopy technologie levert ongeëvenaarde prestaties
           over alle windcondities.
         </p>
@@ -91,21 +91,21 @@ export default function Signature() {
           className="sig-reveal"
           style={{ opacity: 0, transform: 'translateY(48px)' }}
         >
-          <a href="#" className="btn-solid">Shop RPM Series</a>
+          <a href="#" className="btn-solid">Shop Code NXT 2</a>
         </div>
       </div>
 
       <div className={styles.right} aria-hidden="true">
         <div className="sig-img" style={{ width: '100%', height: '100%', position: 'relative' }}>
           <Image
-            src="https://picsum.photos/seed/slingshot-rpm-kite-action-vertical/800/1000"
-            alt="Slingshot RPM Kite in actie"
+            src="https://images.unsplash.com/photo-1502200893034-b7bca90610ef?q=80&w=900&auto=format&fit=crop"
+            alt="Slingshot Code NXT 2 kite in actie"
             fill
             sizes="50vw"
             style={{ objectFit: 'cover' }}
           />
         </div>
-        <span className={styles.rightLabel}>RPM 2025</span>
+        <span className={styles.rightLabel}>Code NXT 2</span>
       </div>
 
     </section>

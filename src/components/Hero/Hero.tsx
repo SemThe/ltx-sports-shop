@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Image from 'next/image'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import styles from './Hero.module.css'
+
+const HERO_VIDEO_ID = 'icWkZLMOcwk'
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -51,16 +52,17 @@ export default function Hero() {
   return (
     <section ref={sectionRef} className={styles.hero} id="top" aria-label="Hero">
 
-      {/* Achtergrond afbeelding — vervang src met jouw eigen foto */}
+      {/* Achtergrond video */}
       <div className={`${styles.bg} hero-bg`}>
-        <Image
-          src="https://picsum.photos/seed/kiteboard-ocean-aerial-jump/1920/1080"
-          alt="Kiteboarder boven de oceaan"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', filter: 'brightness(0.62) contrast(1.08)' }}
-        />
+        <div className={styles.bgVideoWrap}>
+          <iframe
+            className={styles.bgVideo}
+            src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${HERO_VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+            title="Slingshot hero video"
+            allow="autoplay; encrypted-media"
+            frameBorder="0"
+          />
+        </div>
       </div>
 
       <div className={styles.content}>

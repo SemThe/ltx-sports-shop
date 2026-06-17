@@ -10,13 +10,13 @@ type Product = {
   tag: string
   name: string
   price: string
-  imgSeed: string
+  img: string
   hero?: boolean
   badge?: string
   badgeOutline?: boolean
 }
 
-// Pas hier de producten aan
+// Pas hier de producten aan — img = placeholder actiefoto (Unsplash, vrij te gebruiken)
 const PRODUCTS: Product[] = [
   {
     id: 'rpm',
@@ -25,7 +25,7 @@ const PRODUCTS: Product[] = [
     price: 'From €1.299',
     badge: 'New 2025',
     badgeOutline: false,
-    imgSeed: 'slingshot-rpm-kite-blue-sky',
+    img: 'https://images.unsplash.com/photo-1747644575755-6a2e5e21291a?q=80&w=900&auto=format&fit=crop',
     hero: true,
   },
   {
@@ -33,21 +33,21 @@ const PRODUCTS: Product[] = [
     tag: 'Twin-Tip',
     name: 'Refraction',
     price: '€699',
-    imgSeed: 'kiteboard-carbon-water-splash',
+    img: 'https://images.unsplash.com/photo-1780754001443-d706281f4e16?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 'compstick',
     tag: 'Control Bar',
     name: 'Compstick',
     price: '€389',
-    imgSeed: 'kite-bar-control-system-blue',
+    img: 'https://images.unsplash.com/photo-1684082750351-26e3fa5afc89?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 'vision',
     tag: 'Wave / Strapless',
     name: 'Vision',
     price: 'From €1.199',
-    imgSeed: 'wave-kite-ocean-spray-action',
+    img: 'https://images.unsplash.com/photo-1753637986510-80bf5810d949?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 'hoverglide',
@@ -56,7 +56,7 @@ const PRODUCTS: Product[] = [
     price: 'From €1.599',
     badge: 'Foiling',
     badgeOutline: true,
-    imgSeed: 'hydrofoil-board-flying-water',
+    img: 'https://images.unsplash.com/photo-1733757276564-8762b8d63498?q=80&w=800&auto=format&fit=crop',
   },
 ] as const
 
@@ -137,7 +137,7 @@ export default function Products() {
             >
               <div className={styles.cardImg}>
                 <Image
-                  src={`https://picsum.photos/seed/${p.imgSeed}/${'hero' in p && p.hero ? '600/900' : '500/380'}`}
+                  src={p.img}
                   alt={p.name}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
