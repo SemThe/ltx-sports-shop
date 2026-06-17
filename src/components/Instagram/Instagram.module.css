@@ -1,0 +1,181 @@
+/* ============================================================
+   INSTAGRAM FEED
+   ============================================================ */
+.section {
+  padding: 120px 0 100px;
+  overflow: hidden;
+}
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 48px;
+  margin-bottom: 64px;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  color: var(--white);
+}
+
+.igMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+.igIcon {
+  width: 22px;
+  height: 22px;
+  color: rgba(255, 255, 255, 0.45);
+  flex-shrink: 0;
+}
+
+.handle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.handle:hover { color: var(--white); }
+
+.followBtn {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 9px 22px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.followBtn:hover {
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+}
+
+/* ============================================================
+   SCROLLING STRIPS
+   ============================================================ */
+.strip {
+  overflow: hidden;
+}
+
+.strip + .strip {
+  margin-top: 10px;
+}
+
+.track {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: slideLeft 40s linear infinite;
+  will-change: transform;
+}
+
+.trackReverse {
+  animation-name: slideRight;
+  animation-duration: 44s;
+}
+
+.strip:hover .track {
+  animation-play-state: paused;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* ============================================================
+   CARD
+   ============================================================ */
+.card {
+  flex-shrink: 0;
+  width: 280px;
+  display: block;
+  text-decoration: none;
+}
+
+.imgWrap {
+  position: relative;
+  width: 280px;
+  height: 350px;
+  overflow: hidden;
+}
+
+.imgWrap img {
+  transition: transform 0.7s var(--ease-expo);
+}
+
+.card:hover .imgWrap img {
+  transform: scale(1.06);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.card:hover .overlay {
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.heart {
+  width: 32px;
+  height: 32px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.card:hover .heart {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0 20px;
+  }
+  .card { width: 220px; }
+  .imgWrap { width: 220px; height: 275px; }
+  .track { gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+}
