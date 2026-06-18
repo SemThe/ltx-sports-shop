@@ -6,34 +6,66 @@ import styles from './Hero.module.css'
 
 const HERO_VIDEO_ID = 'icWkZLMOcwk'
 
+declare global {
+  interface Window {
+    YT: any
+    onYouTubeIframeAPIReady: () => void
+  }
+}
+
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef  = useRef<HTMLElement>(null)
+  const playerDivRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // YouTube Player API — forceert autoplay zodat de play-knop nooit verschijnt
+    const initPlayer = () => {
+      if (!playerDivRef.current) return
+      new window.YT.Player(playerDivRef.current, {
+        videoId: HERO_VIDEO_ID,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          loop: 1,
+          playlist: HERO_VIDEO_ID,
+          controls: 0,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          iv_load_policy: 3,
+          disablekb: 1,
+          fs: 0,
+        },
+        events: {
+          onReady: (e: any) => e.target.playVideo(),
+        },
+      })
+    }
+
+    if (window.YT?.Player) {
+      initPlayer()
+    } else {
+      const tag = document.createElement('script')
+      tag.src = 'https://www.youtube.com/iframe_api'
+      document.head.appendChild(tag)
+      window.onYouTubeIframeAPIReady = initPlayer
+    }
+  }, [])
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) return
 
     const ctx = gsap.context(() => {
-      // Beginstand instellen
-      gsap.set(['.hero-label', '.hero-sub', '.hero-actions', '.hero-scroll'], {
-        opacity: 0,
-        y: 22,
-      })
+      gsap.set(['.hero-label', '.hero-sub', '.hero-actions', '.hero-scroll'], { opacity: 0, y: 22 })
 
-      // Titel reveal
       const tl = gsap.timeline({ delay: 0.15 })
-      tl.to('.hero-line-inner', {
-        y: '0%',
-        duration: 1.15,
-        ease: 'power4.out',
-        stagger: 0.11,
-      })
-        .to('.hero-label', { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }, '-=0.55')
-        .to('.hero-sub',   { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }, '-=0.55')
+      tl.to('.hero-line-inner', { y: '0%', duration: 1.15, ease: 'power4.out', stagger: 0.11 })
+        .to('.hero-label',   { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }, '-=0.55')
+        .to('.hero-sub',     { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }, '-=0.55')
         .to('.hero-actions', { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }, '-=0.55')
-        .to('.hero-scroll', { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
+        .to('.hero-scroll',  { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
 
-      // Parallax achtergrond
       gsap.to('.hero-bg', {
         yPercent: 22,
         ease: 'none',
@@ -52,16 +84,9 @@ export default function Hero() {
   return (
     <section ref={sectionRef} className={styles.hero} id="top" aria-label="Hero">
 
-      {/* Achtergrond video */}
       <div className={`${styles.bg} hero-bg`}>
         <div className={styles.bgVideoWrap}>
-          <iframe
-            className={styles.bgVideo}
-            src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${HERO_VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
-            title="Slingshot hero video"
-            allow="autoplay; encrypted-media"
-            frameBorder="0"
-          />
+          <div ref={playerDivRef} className={styles.bgVideo} />
         </div>
       </div>
 
@@ -90,7 +115,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className={`${styles.scrollIndicator} hero-scroll`} aria-hidden="true">
         <div className={styles.scrollLine} />
       </div>

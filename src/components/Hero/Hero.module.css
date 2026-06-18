@@ -23,7 +23,8 @@
   overflow: hidden;
 }
 
-.bgVideo {
+.bgVideo,
+.bgVideo iframe {
   position: absolute;
   top: 50%;
   left: 50%;

@@ -2,6 +2,7 @@ import Nav from '@/components/Nav/Nav'
 import Hero from '@/components/Hero/Hero'
 import Products from '@/components/Products/Products'
 import Instagram from '@/components/Instagram/Instagram'
+import Marquee from '@/components/Marquee/Marquee'
 import Signature from '@/components/Signature/Signature'
 import Story from '@/components/Story/Story'
 import FeaturedVideo from '@/components/FeaturedVideo/FeaturedVideo'
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <Products />
         <Signature />
+        <Marquee />
         <Instagram />
         <Story />
         <FeaturedVideo />

@@ -25,6 +25,14 @@
   font-size: 22px;
   letter-spacing: 0.1em;
   flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.4s var(--ease-expo), transform 0.4s var(--ease-expo);
+}
+
+.logoVisible .logo {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .links {
