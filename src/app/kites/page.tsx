@@ -1,6 +1,5 @@
 'use client'
 
-import { useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Nav from '@/components/Nav/Nav'
@@ -8,35 +7,52 @@ import Footer from '@/components/Footer/Footer'
 import { KITES } from '@/lib/kites'
 import styles from './page.module.css'
 
+const HERO_IMG = 'https://images.unsplash.com/photo-1607537825952-48c2142007ae?q=80&w=2400&auto=format&fit=crop'
+
 export default function KitesPage() {
   return (
     <>
       <Nav alwaysShowLogo />
       <main className={styles.main}>
 
-        {/* Back to home */}
-        <div className={styles.topBar}>
-          <Link href="/" className={styles.backBtn}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M19 12H5M5 12L11 18M5 12L11 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Terug naar home
-          </Link>
-        </div>
-
-        {/* Page header */}
-        <header className={styles.header}>
-          <p className={styles.headerEyebrow}>Slingshot Kites</p>
-          <h1 className={styles.headerTitle}>
-            The<br />Kite<br />Collection
-          </h1>
-          <div className={styles.headerMeta}>
-            <span className={styles.headerCount}>{String(KITES.length).padStart(2, '0')} kites</span>
-            <p className={styles.headerSub}>
-              Each kite is shaped for a specific style of riding. Find yours.
-            </p>
+        {/* Hero header with background image */}
+        <div className={styles.heroSection}>
+          <div className={styles.heroImgContainer}>
+            <Image
+              src={HERO_IMG}
+              alt="Kitesurfer in actie"
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
+            />
+            <div className={styles.heroOverlay} />
           </div>
-        </header>
+
+          {/* Back to home */}
+          <div className={styles.topBar}>
+            <Link href="/" className={styles.backBtn}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M19 12H5M5 12L11 18M5 12L11 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Terug naar home
+            </Link>
+          </div>
+
+          {/* Page header */}
+          <header className={styles.header}>
+            <p className={styles.headerEyebrow}>Slingshot Kites</p>
+            <h1 className={styles.headerTitle}>
+              The<br />Kite<br />Collection
+            </h1>
+            <div className={styles.headerMeta}>
+              <span className={styles.headerCount}>{String(KITES.length).padStart(2, '0')} kites</span>
+              <p className={styles.headerSub}>
+                Each kite is shaped for a specific style of riding. Find yours.
+              </p>
+            </div>
+          </header>
+        </div>
 
         {/* Kite list */}
         <ul className={styles.list} role="list">
