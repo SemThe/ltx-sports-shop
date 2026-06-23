@@ -6,14 +6,44 @@
   padding-top: var(--nav-h);
 }
 
+/* ── Top bar (back btn + breadcrumb) ── */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 4px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.backBtn:hover {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+}
+
 /* ── Breadcrumb ── */
 .breadcrumb {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 20px 48px;
-  max-width: var(--max-w);
-  margin: 0 auto;
+  padding: 0;
 }
 
 .breadcrumbLink {
@@ -284,21 +314,6 @@
   text-align: right;
 }
 
-/* ── Back link ── */
-.backLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
-  transition: color 0.2s;
-}
-
-.backLink:hover { color: var(--white); }
-
 /* ── Long description ── */
 .longDesc {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -419,7 +434,7 @@
     padding-top: 32px;
   }
   .infoPanelInner { position: static; }
-  .breadcrumb { padding: 16px 24px; }
+  .topBar { padding: 14px 24px; }
   .longDesc, .related { padding: 56px 24px; }
   .relatedGrid { grid-template-columns: 1fr 1fr; }
 }
@@ -429,6 +444,6 @@
   .thumbs { grid-template-columns: repeat(4, 1fr); }
   .ctas { flex-direction: column; }
   .relatedGrid { grid-template-columns: 1fr; }
-  .breadcrumb { padding: 12px 20px; }
+  .topBar { padding: 12px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
   .longDesc, .related { padding: 48px 20px; }
 }

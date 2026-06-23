@@ -6,6 +6,27 @@
   padding-top: var(--nav-h);
 }
 
+/* ── Back bar ── */
+.topBar {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 18px 48px 0;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  transition: color 0.2s;
+}
+
+.backBtn:hover { color: var(--white); }
+
 /* ── Page header ── */
 .header {
   display: grid;
@@ -196,6 +217,7 @@
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
+  .topBar { padding: 14px 24px; }
   .header {
     padding: 60px 24px 48px;
     grid-template-columns: 1fr;
@@ -209,6 +231,7 @@
 }
 
 @media (max-width: 640px) {
+  .topBar { padding: 12px 20px; }
   .header { padding: 48px 20px 36px; }
   .row {
     grid-template-columns: 1fr;

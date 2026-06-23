@@ -14,6 +14,16 @@ export default function KitesPage() {
       <Nav alwaysShowLogo />
       <main className={styles.main}>
 
+        {/* Back to home */}
+        <div className={styles.topBar}>
+          <Link href="/" className={styles.backBtn}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M19 12H5M5 12L11 18M5 12L11 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Terug naar home
+          </Link>
+        </div>
+
         {/* Page header */}
         <header className={styles.header}>
           <p className={styles.headerEyebrow}>Slingshot Kites</p>

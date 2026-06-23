@@ -24,14 +24,22 @@ export default function KiteDetailPage({ params }: { params: Promise<{ id: strin
       <Nav alwaysShowLogo />
       <main className={styles.main}>
 
-        {/* Breadcrumb */}
-        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-          <Link href="/" className={styles.breadcrumbLink}>Home</Link>
-          <span className={styles.breadcrumbSep}>/</span>
-          <Link href="/kites" className={styles.breadcrumbLink}>Kites</Link>
-          <span className={styles.breadcrumbSep}>/</span>
-          <span className={styles.breadcrumbCurrent}>{kite.name}</span>
-        </nav>
+        {/* Top nav bar with back button + breadcrumb */}
+        <div className={styles.topBar}>
+          <Link href="/kites" className={styles.backBtn}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M19 12H5M5 12L11 18M5 12L11 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Terug naar kites
+          </Link>
+          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+            <Link href="/" className={styles.breadcrumbLink}>Home</Link>
+            <span className={styles.breadcrumbSep}>/</span>
+            <Link href="/kites" className={styles.breadcrumbLink}>Kites</Link>
+            <span className={styles.breadcrumbSep}>/</span>
+            <span className={styles.breadcrumbCurrent}>{kite.name}</span>
+          </nav>
+        </div>
 
         {/* Two-column layout */}
         <div className={styles.layout}>
@@ -131,14 +139,6 @@ export default function KiteDetailPage({ params }: { params: Promise<{ id: strin
                   ))}
                 </dl>
               </div>
-
-              {/* Back link */}
-              <Link href="/kites" className={styles.backLink}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M19 12H5M5 12L11 18M5 12L11 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                All kites
-              </Link>
 
             </div>
           </div>

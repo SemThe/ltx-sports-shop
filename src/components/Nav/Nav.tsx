@@ -27,10 +27,10 @@ export default function Nav({ alwaysShowLogo = false }: { alwaysShowLogo?: boole
 
       <ul className={styles.links} role="list">
         <li><a href="/kites">Kites</a></li>
-        <li><a href="#boards">Boards</a></li>
-        <li><a href="#gear">Gear</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#about">Story</a></li>
+        <li><a href="/#boards">Boards</a></li>
+        <li><a href="/#gear">Gear</a></li>
+        <li><a href="/#team">Team</a></li>
+        <li><a href="/#about">Story</a></li>
       </ul>
 
       <a href="/kites" className={styles.shopBtn}>Shop Now</a>
