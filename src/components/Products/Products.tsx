@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import styles from './Products.module.css'
 
@@ -14,6 +15,7 @@ type Product = {
   hero?: boolean
   badge?: string
   badgeOutline?: boolean
+  href?: string
 }
 
 // Pas hier de producten aan — img = placeholder actiefoto (Unsplash, vrij te gebruiken)
@@ -22,11 +24,12 @@ const PRODUCTS: Product[] = [
     id: 'rpm',
     tag: 'Freeride / Wake',
     name: 'RPM Kite',
-    price: 'From €1.299',
-    badge: 'New 2025',
+    price: 'From €1,299',
+    badge: 'Bestseller',
     badgeOutline: false,
     img: 'https://images.unsplash.com/photo-1747644575755-6a2e5e21291a?q=80&w=900&auto=format&fit=crop',
     hero: true,
+    href: '/kites/rpm',
   },
   {
     id: 'refraction',
@@ -46,19 +49,20 @@ const PRODUCTS: Product[] = [
     id: 'vision',
     tag: 'Wave / Strapless',
     name: 'Vision',
-    price: 'From €1.199',
+    price: 'From €1,199',
     img: 'https://images.unsplash.com/photo-1753637986510-80bf5810d949?q=80&w=800&auto=format&fit=crop',
+    href: '/kites/vision',
   },
   {
     id: 'hoverglide',
     tag: 'Hydrofoil',
     name: 'Hover Glide',
-    price: 'From €1.599',
+    price: 'From €1,599',
     badge: 'Foiling',
     badgeOutline: true,
     img: 'https://images.unsplash.com/photo-1733757276564-8762b8d63498?q=80&w=800&auto=format&fit=crop',
   },
-] as const
+]
 
 const TABS = ['Kites', 'Boards', 'Bars', 'Foils', 'Accessories']
 
@@ -106,9 +110,9 @@ export default function Products() {
           <h2 className={`${styles.title} products-title`}>
             The<br />Collection
           </h2>
-          <a href="#" className={styles.viewAll}>
-            View all <span className={styles.arrow}>→</span>
-          </a>
+          <Link href="/kites" className={styles.viewAll}>
+            View all kites <span className={styles.arrow}>→</span>
+          </Link>
         </div>
 
         {/* Categorie tabs */}
@@ -128,38 +132,42 @@ export default function Products() {
 
         {/* Productgrid */}
         <div className={styles.grid}>
-          {PRODUCTS.map((p) => (
-            <article
-              key={p.id}
-              className={`${styles.card} ${'hero' in p && p.hero ? styles.cardHero : styles.cardSm} pcard`}
-              tabIndex={0}
-              data-cursor-hover
-            >
-              <div className={styles.cardImg}>
-                <Image
-                  src={p.img}
-                  alt={p.name}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-
-              {p.badge && (
-                <span className={`${styles.badge} ${p.badgeOutline ? styles.badgeOutline : ''}`}>
-                  {p.badge}
-                </span>
-              )}
-
-              <div className={styles.scrim} aria-hidden="true" />
-
-              <div className={styles.info}>
-                <p className={styles.infoTag}>{p.tag}</p>
-                <h3 className={styles.infoName}>{p.name}</h3>
-                <p className={styles.infoPrice}>{p.price}</p>
-              </div>
-            </article>
-          ))}
+          {PRODUCTS.map((p) => {
+            const cardClass = `${styles.card} ${p.hero ? styles.cardHero : styles.cardSm} pcard`
+            const inner = (
+              <>
+                <div className={styles.cardImg}>
+                  <Image
+                    src={p.img}
+                    alt={p.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+                {p.badge && (
+                  <span className={`${styles.badge} ${p.badgeOutline ? styles.badgeOutline : ''}`}>
+                    {p.badge}
+                  </span>
+                )}
+                <div className={styles.scrim} aria-hidden="true" />
+                <div className={styles.info}>
+                  <p className={styles.infoTag}>{p.tag}</p>
+                  <h3 className={styles.infoName}>{p.name}</h3>
+                  <p className={styles.infoPrice}>{p.price}</p>
+                </div>
+              </>
+            )
+            return p.href ? (
+              <Link key={p.id} href={p.href} className={cardClass} data-cursor-hover>
+                {inner}
+              </Link>
+            ) : (
+              <article key={p.id} className={cardClass} tabIndex={0} data-cursor-hover>
+                {inner}
+              </article>
+            )
+          })}
         </div>
 
       </div>

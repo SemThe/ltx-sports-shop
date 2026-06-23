@@ -1,0 +1,434 @@
+/* ============================================================
+   KITE DETAIL PAGE
+   ============================================================ */
+.main {
+  min-height: 100dvh;
+  padding-top: var(--nav-h);
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 48px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.breadcrumbLink {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  transition: color 0.2s;
+}
+
+.breadcrumbLink:hover { color: var(--white); }
+
+.breadcrumbSep {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 11px;
+}
+
+.breadcrumbCurrent {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Two-column layout ── */
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 48px 80px;
+  align-items: start;
+}
+
+/* ── Gallery ── */
+.gallery {
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 48px;
+}
+
+.galleryMain {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--black-card);
+}
+
+.galleryMainImg {
+  transition: transform 0.7s var(--ease-expo) !important;
+}
+
+.galleryMain:hover .galleryMainImg {
+  transform: scale(1.04);
+}
+
+.heroBadge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 5px 12px;
+  background: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--black-card);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.thumbActive {
+  border-color: var(--accent);
+}
+
+.thumb:hover:not(.thumbActive) {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Info Panel ── */
+.infoPanel {
+  padding-left: 48px;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.infoPanelInner {
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+  padding: 8px 0 48px;
+}
+
+.category {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.name {
+  font-family: var(--font-condensed);
+  font-size: clamp(40px, 4.5vw, 72px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 0.95;
+  margin-bottom: 12px;
+}
+
+.tagline {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
+  margin-bottom: 28px;
+}
+
+.priceLine {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.price {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.priceNote {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.38);
+  font-weight: 300;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+/* ── Size selector ── */
+.sizeBlock {
+  margin-bottom: 32px;
+}
+
+.sizeLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+}
+
+.sizeActive {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sizeBtn {
+  width: 56px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.sizeBtn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--white);
+}
+
+.sizeBtnActive {
+  border-color: var(--white);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── CTAs ── */
+.ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+/* ── Specs ── */
+.specs {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 28px;
+  margin-bottom: 36px;
+}
+
+.specsTitle {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 16px;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.specLabel {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.04em;
+}
+
+.specValue {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+
+/* ── Back link ── */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.2s;
+}
+
+.backLink:hover { color: var(--white); }
+
+/* ── Long description ── */
+.longDesc {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 80px 48px;
+}
+
+.longDescInner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.longDescEyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.longDescText {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ── Related kites ── */
+.related {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 80px 48px;
+  background: var(--black-soft);
+}
+
+.relatedInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.relatedTitle {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 52px);
+  margin-bottom: 40px;
+  letter-spacing: 0.03em;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.relatedCard {
+  display: block;
+  overflow: hidden;
+  background: var(--black-card);
+}
+
+.relatedImg {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.relatedImgEl {
+  transition: transform 0.7s var(--ease-expo) !important;
+}
+
+.relatedCard:hover .relatedImgEl {
+  transform: scale(1.06);
+}
+
+.relatedInfo {
+  padding: 20px 20px 24px;
+}
+
+.relatedCategory {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.relatedName {
+  font-family: var(--font-condensed);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.relatedPrice {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 0 24px 64px;
+    gap: 40px;
+  }
+  .gallery {
+    position: static;
+    padding-right: 0;
+  }
+  .infoPanel {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding-top: 32px;
+  }
+  .infoPanelInner { position: static; }
+  .breadcrumb { padding: 16px 24px; }
+  .longDesc, .related { padding: 56px 24px; }
+  .relatedGrid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .layout { padding: 0 20px 48px; }
+  .thumbs { grid-template-columns: repeat(4, 1fr); }
+  .ctas { flex-direction: column; }
+  .relatedGrid { grid-template-columns: 1fr; }
+  .breadcrumb { padding: 12px 20px; }
+  .longDesc, .related { padding: 48px 20px; }
+}

@@ -1,0 +1,221 @@
+/* ============================================================
+   KITES LISTING PAGE
+   ============================================================ */
+.main {
+  min-height: 100dvh;
+  padding-top: var(--nav-h);
+}
+
+/* ── Page header ── */
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  padding: 80px 48px 72px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  gap: 24px;
+}
+
+.headerEyebrow {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headerEyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: clamp(72px, 10vw, 148px);
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+}
+
+.headerMeta {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+  gap: 16px;
+}
+
+.headerCount {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 72px);
+  color: rgba(255, 255, 255, 0.12);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.headerSub {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+/* ── List ── */
+.list {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 64px 1fr 2fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 48px;
+  transition: background 0.3s var(--ease-expo);
+  cursor: pointer;
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+/* Index number */
+.index {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.3s;
+}
+
+.row:hover .index {
+  color: var(--accent);
+}
+
+/* Kite image */
+.imgWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--black-card);
+}
+
+.img {
+  transition: transform 0.8s var(--ease-expo) !important;
+}
+
+.row:hover .img {
+  transform: scale(1.06);
+}
+
+/* Info block */
+.info {
+  padding: 8px 0;
+}
+
+.infoCategory {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.infoName {
+  font-family: var(--font-condensed);
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.infoTagline {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.infoBottom {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.infoPrice {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.03em;
+}
+
+.badge {
+  padding: 3px 10px;
+  background: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Arrow */
+.arrow {
+  color: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+  transition: color 0.3s, transform 0.4s var(--ease-expo);
+}
+
+.row:hover .arrow {
+  color: var(--white);
+  transform: translateX(6px);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .header {
+    padding: 60px 24px 48px;
+    grid-template-columns: 1fr;
+  }
+  .headerMeta { padding-bottom: 0; }
+  .row {
+    grid-template-columns: 40px 1fr 1fr auto;
+    gap: 20px;
+    padding: 24px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header { padding: 48px 20px 36px; }
+  .row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+  .index { display: none; }
+  .arrow { display: none; }
+  .imgWrap { aspect-ratio: 16 / 9; }
+}
