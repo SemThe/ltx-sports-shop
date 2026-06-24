@@ -82,6 +82,7 @@ export default function KitesPage() {
                   <p className={styles.infoTagline}>{kite.tagline}</p>
                   <div className={styles.infoBottom}>
                     <span className={styles.infoPrice}>{kite.price}</span>
+                    <span className={`${styles.levelBadge} ${styles[`level${kite.level}`]}`}>{kite.level}</span>
                     {kite.badge && (
                       <span className={styles.badge}>{kite.badge}</span>
                     )}

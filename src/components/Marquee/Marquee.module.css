@@ -11,7 +11,7 @@
 .track {
   display: flex;
   flex-shrink: 0;
-  animation: marqueeScroll 36s linear infinite;
+  animation: marqueeScroll 72s linear infinite;
   will-change: transform;
 }
 

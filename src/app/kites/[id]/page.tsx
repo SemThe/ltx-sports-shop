@@ -105,7 +105,7 @@ export default function KiteDetailPage({ params }: { params: Promise<{ id: strin
               {/* Size selector */}
               <div className={styles.sizeBlock}>
                 <p className={styles.sizeLabel}>
-                  Size
+                  Maat
                   <span className={styles.sizeActive}> — {activeSize}</span>
                 </p>
                 <div className={styles.sizes}>
@@ -121,19 +121,45 @@ export default function KiteDetailPage({ params }: { params: Promise<{ id: strin
                 </div>
               </div>
 
+              {/* Maatgids */}
+              <details className={styles.sizeGids}>
+                <summary className={styles.sizeGidsTrigger}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M12 8v4m0 4h.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  Welke maat heb ik nodig?
+                </summary>
+                <p className={styles.sizeGidsTekst}>{kite.sizeGids}</p>
+              </details>
+
               {/* CTAs */}
               <div className={styles.ctas}>
-                <button className="btn-solid">Add to Cart</button>
-                <a href="mailto:info@ltxsports.nl" className="btn-ghost">Contact for Order</a>
+                <a
+                  href={`mailto:info@ltxsports.nl?subject=Bestelling: ${kite.name} ${activeSize}&body=Hallo,%0A%0AIk wil graag de ${kite.name} in maat ${activeSize} bestellen. Kunnen jullie mij meer informatie sturen?%0A%0ABedankt`}
+                  className="btn-solid"
+                >
+                  Bestelling plaatsen
+                </a>
+                <a href="mailto:info@ltxsports.nl" className="btn-ghost">Stel een vraag</a>
               </div>
+              <p className={styles.ctaNote}>Bestellingen verlopen via e-mail. Wij reageren binnen 1 werkdag.</p>
 
               {/* Specs */}
               <div className={styles.specs}>
-                <p className={styles.specsTitle}>Specifications</p>
+                <p className={styles.specsTitle}>Specificaties</p>
                 <dl className={styles.specsList}>
                   {kite.specs.map((spec) => (
                     <div key={spec.label} className={styles.specRow}>
-                      <dt className={styles.specLabel}>{spec.label}</dt>
+                      <dt className={styles.specLabel}>
+                        {spec.label}
+                        {spec.uitleg && (
+                          <span className={styles.specTooltipWrap}>
+                            <span className={styles.specTooltipIcon} aria-hidden="true">?</span>
+                            <span className={styles.specTooltip}>{spec.uitleg}</span>
+                          </span>
+                        )}
+                      </dt>
                       <dd className={styles.specValue}>{spec.value}</dd>
                     </div>
                   ))}
