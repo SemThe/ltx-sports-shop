@@ -27,13 +27,6 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Documenten
-
-| Bestand | Inhoud |
-|---|---|
-| `LTX-Sports-Shop-Gebruikerstest.docx` | Gebruikerstest met 5 testpersonen |
-| `LTX-Sports-Shop-Iteratiedocument.docx` | Overzicht van alle iteraties en designkeuzes |
-| `LTX-Sports-Shop-Prompts.docx` | Alle code-prompts per onderdeel |
 
 ## Gemaakt door
 
